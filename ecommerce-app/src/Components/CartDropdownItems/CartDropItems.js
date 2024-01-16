@@ -18,7 +18,7 @@ console.log(Boolean(cartData))
             <div>total :<span>{eval(quantity*price)}</span></div>
 
             </div>
-          ) 
+          )                                  
         })
      :( <><h4>Your cart is Empty </h4> <Link to = "/shop" onClick = {()=>setIsCartOpen(false)}> Add Items</Link> </>) } 
     </div>
