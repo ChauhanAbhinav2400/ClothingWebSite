@@ -1,0 +1,14 @@
+.cartdropitems-container{
+    width:248px;
+    height:85px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #fff;
+    color:#000;
+align-items: center;
+}
+.addtotal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

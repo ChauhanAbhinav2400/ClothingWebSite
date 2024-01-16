@@ -1,0 +1,36 @@
+.button-type{
+    width:110px;
+    height:50px;
+    border: 1px solid grey;
+    padding:2px;
+    margin:3px;
+
+}
+.google{
+    background-color: blue;
+    color:white;
+
+}
+.google:hover{
+    border-radius: 10px;
+}
+.shop{
+    background-color:black;
+    color:white;
+
+}
+.shop:hover{
+    border-radius: 10px;
+    cursor: pointer;
+}
+.inverted{
+    background-color: #fff;
+    color:#000
+}
+.inverted:hover{
+    background-color: #000;
+    color:#fff;
+    border-radius: 20px;
+    cursor: pointer;
+    opacity: 1;
+}

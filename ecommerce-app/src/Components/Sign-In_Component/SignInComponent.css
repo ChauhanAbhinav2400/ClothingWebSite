@@ -1,0 +1,48 @@
+.buttonofsignin{
+    position:relative;
+    left:130px;
+    bottom:56px
+}
+.signupcomponent{
+display: flex;
+flex-direction: column;
+width:450px;
+justify-content: space-evenly;
+
+}
+.setauthentication{
+    display: flex;
+    justify-content: space-around;
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
