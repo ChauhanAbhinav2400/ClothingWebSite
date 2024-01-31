@@ -2,7 +2,7 @@ import React, { useState,useContext } from 'react'
 import {SignAuthUserWithEmailandPassowrd,createUserDocumentFromAuth, signInWithGooglePopup} from "../../Firebase/Firebase.utils"
 import FormInput from '../Form-Input/FormInput'
 import Button from '../../Button-type/Button'
-import {UserContext} from "../../userContext/UserContext"
+
 
 const FormInputFields = {
    

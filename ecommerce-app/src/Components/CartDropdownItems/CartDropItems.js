@@ -1,11 +1,16 @@
-import React, { useContext } from 'react'
-import {CartContext} from "../../userContext/CartContext";
+import React  from 'react';
 import "./CartDropItems.css"
 import { Link } from 'react-router-dom';
+import { useSelector ,useDispatch} from 'react-redux';
+import { CartdataSelector } from '../../store/Cart/Cart.Selelctor';
+import { setIsCartOpen } from '../../store/Cart/Cart.Action';
 
 const CartDropItems = () => {
-const {cartData,setIsCartOpen} = useContext(CartContext)
+const cartData = useSelector(CartdataSelector)
+console.log(cartData)
+const dispatch = useDispatch()
 console.log(Boolean(cartData))
+console.log(cartData)
   return (
     <div>
       {cartData.length > 0 ?
@@ -20,7 +25,7 @@ console.log(Boolean(cartData))
             </div>
           )                                  
         })
-     :( <><h4>Your cart is Empty </h4> <Link to = "/shop" onClick = {()=>setIsCartOpen(false)}> Add Items</Link> </>) } 
+     :( <><h4>Your cart is Empty </h4> <Link to = "/shop" onClick = {()=>dispatch(setIsCartOpen(false))}> Add Items</Link> </>) } 
     </div>
   )
 }

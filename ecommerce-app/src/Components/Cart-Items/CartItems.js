@@ -3,14 +3,15 @@ import {useNavigate} from "react-router-dom"
 import "./CartItems.css";
 import Button from '../../Button-type/Button';
 import CartDropItems from '../CartDropdownItems/CartDropItems';
-import {CartContext} from "../../userContext/CartContext"
-
+import {useDispatch} from "react-redux"
+import { setIsCartOpen } from '../../store/Cart/Cart.Action';
 const CartItems = () => {
-  const Navigate = useNavigate()
-const {setIsCartOpen} = useContext(CartContext)
+  const Navigate = useNavigate() 
+const dispatch = useDispatch()
+
 const gotocheckoutPage = ()=>{
   Navigate("/checkout")
-  setIsCartOpen(false)
+  dispatch(setIsCartOpen(false))
 }
 
   return (
