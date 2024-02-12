@@ -1,7 +1,9 @@
-import React, { useState,useContext } from 'react'
+import React, { useState} from 'react';
+import {useDispatch} from "react-redux"
 import {SignAuthUserWithEmailandPassowrd,createUserDocumentFromAuth, signInWithGooglePopup} from "../../Firebase/Firebase.utils"
 import FormInput from '../Form-Input/FormInput'
 import Button from '../../Button-type/Button'
+import { emailSignInStart } from '../../store/user/user.action';
 
 
 const FormInputFields = {
@@ -11,7 +13,7 @@ const FormInputFields = {
    
 }
 const Authentication = () => {
-
+    const dispatch = useDispatch()
     const [formDetails, setFormDetails] = useState(FormInputFields)
     const {  email, password } = formDetails;
 
@@ -34,10 +36,8 @@ if(email && password){
     alert("fill the details")
 }
 try{
-const response  =  await SignAuthUserWithEmailandPassowrd(email,password)
+dispatch(emailSignInStart(email,password))
 // console.log(response)
-
-
 clearFormInput();
 }catch(error){
     if(error.code == "auth/invalid-credential"){

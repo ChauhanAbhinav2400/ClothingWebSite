@@ -1,5 +1,3 @@
-
-import {onAuthStateChangedListner,createUserDocumentFromAuth} from "./Firebase/Firebase.utils";
 import './Components/Category-item.css';
 import Navigation from './Navigation/Navigation';
 import Home from './Route/Home';
@@ -9,19 +7,20 @@ import Contact from './Route/Contact';
 import Shop from './Route/Shop';
 import Checkout from './Route/CheckOut/Checkout';
 import { useEffect } from "react";
-import {setCurrent} from "./store/user/user.action"
 import {useDispatch} from "react-redux"
+import { checkUserSession } from './store/user/user.action';
 
 function App() {
 const dispatch = useDispatch()
   useEffect(()=>{
-    const unsubscribe = onAuthStateChangedListner((user)=>{
-       if(user){
-           createUserDocumentFromAuth(user)
-       }
-       dispatch(setCurrent(user))
-   })
-   return unsubscribe
+   dispatch(checkUserSession())
+  //   const unsubscribe = onAuthStateChangedListner((user)=>{
+  //      if(user){
+  //          createUserDocumentFromAuth(user)
+  //      }
+  //      dispatch(setCurrent(user))
+  //  })
+  //  return unsubscribe
    },[])
 
   return (

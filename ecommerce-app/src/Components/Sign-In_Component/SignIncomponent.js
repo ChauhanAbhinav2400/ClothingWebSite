@@ -1,8 +1,10 @@
-import React, { useContext, useState } from 'react'
+import React, {  useState } from 'react';
+import {useDispatch} from "react-redux"
 import {CreateAuthUserWithEmailandPassowrd,createUserDocumentFromAuth} from "../../Firebase/Firebase.utils"
 import FormInput from '../Form-Input/FormInput'
 import Button from '../../Button-type/Button';
 import "./SignInComponent.css"
+import { signUpStart } from '../../store/user/user.action';
 
 const FormInputFields = {
     displayName: "",
@@ -11,7 +13,7 @@ const FormInputFields = {
     confirmPassword: ""
 }
 const SignIncomponent = () => {
-
+const dispatch = useDispatch()
     const [formDetails, setFormDetails] = useState(FormInputFields)
     const { displayName, email, password, confirmPassword } = formDetails;
 
@@ -30,10 +32,7 @@ if(password!==confirmPassword){
     return;
 }
 try{
-const {user} =  await CreateAuthUserWithEmailandPassowrd(email,password);
-// console.log(response)
-
-await createUserDocumentFromAuth(user,{displayName})
+dispatch(signUpStart(email,password,displayName))
 clearFormInput();
 }catch(error){
     if(error.code == "auth/email-already-in-use"){

@@ -1,4 +1,4 @@
-import React,{useContext, useState} from 'react'
+import React from 'react'
 import {Link} from "react-router-dom"
 import {Outlet} from "react-router-dom";
 import {signout} from "../Firebase/Firebase.utils"
@@ -7,7 +7,8 @@ import CartItems from '../Components/Cart-Items/CartItems';
 import {useSelector,useDispatch} from "react-redux"
 import { CartisCartOpen } from '../store/Cart/Cart.Selelctor';
 import { setIsCartOpen } from '../store/Cart/Cart.Action';
-
+import "./navigation.css"
+import { signOutStart } from '../store/user/user.action';
 const Navigation = () => {
 
 const current = useSelector((state)=>state.user.current)
@@ -15,6 +16,7 @@ const current = useSelector((state)=>state.user.current)
 const isCartOpen = useSelector(CartisCartOpen)
 const dispatch = useDispatch()
 
+const signOutUser = ()=>dispatch(signOutStart())
   return (
     <>
     <div className='nav-main-container'>
@@ -25,7 +27,7 @@ const dispatch = useDispatch()
         <Link  to = "/shop" className='shopofroute' onClick={()=>dispatch(setIsCartOpen(false))}>SHOP</Link>
         <Link  to = "/contact" className='contact'>CONTACT</Link>
         {
-          current? <Link  to = "/sign-in" className='sign-in' onClick = {signout}>SIGN OUT</Link>: <Link  to = "/sign-in" className='sign-in'>SIGN IN</Link>
+          current? <Link  to = "/sign-in" className='sign-in' onClick = {signOutUser}>SIGN OUT</Link>: <Link  to = "/sign-in" className='sign-in'>SIGN IN</Link>
         }
        <CartIcon  />
       </div>
